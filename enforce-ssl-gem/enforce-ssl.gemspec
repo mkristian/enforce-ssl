@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
 
   s.summary = 'enforce the use of SSL for all controller actions'
   s.description = 'enforce the use of SSL for all controller actions, skip the enforcement with skip_before_filter :enforce_ssl for selected actions. moto: secure everything, open where needed'
-  s.homepage = 'http://github.com/mkristian/ixtlan-guard'
+  s.homepage = 'http://github.com/mkristian/enforce-ssl'
 
   s.authors = ['mkristian']
   s.email = ['m.kristian@web.de']

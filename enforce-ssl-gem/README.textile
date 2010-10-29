@@ -2,7 +2,7 @@ h1. Enforce SSL for you controllers
 
 p. this is derived from the "rails/ssl_requirement":http://github.org/rails/ssl_requirement and adopted a more strict approach: *secure everything and open it where needed*.
 
-p. info about the actual gem please look into the directory "enforce-ssl-gem":http://github.org/mkristian/ixtlan-guard/enforce-ssl-gem
+p. info about the actual gem please look into the directory "enforce-ssl-gem":http://github.org/mkristian/enforce-ssl/enforce-ssl-gem
 
 h2. usage
 
