@@ -26,7 +26,7 @@ class EnforceSslRailtie < Rails::Railtie
     app.config.class.class_eval do
       attr_accessor :ssl_port
     end
-    app.config.ssl_port = 443
+    app.config.ssl_port = Rails.env == "production" ? 443 : 3000
   end
 end
 
