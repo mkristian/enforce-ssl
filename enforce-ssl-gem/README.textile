@@ -2,11 +2,11 @@ h1. Enforce SSL for you controllers
 
 p. this is derived from the "rails/ssl_requirement":http://github.org/rails/ssl_requirement and adopted a more strict approach: *secure everything and open it where needed*.
 
-p. info about the actual gem please look into the directory "enforce-ssl-gem":http://github.org/mkristian/ixtlan-guard/gem
+p. info about the actual gem please look into the directory "enforce-ssl-gem":http://github.org/mkristian/ixtlan-guard/enforce-ssl-gem
 
 h2. usage
 
-p. add the gem in 'Gemfile'
+p. it requires rails2. for installation add the gem in 'Gemfile'
 
 bc.         gem 'enforce-ssl'
 
@@ -28,6 +28,8 @@ p. if your Gemfile allows to JRuby as interpreter then you can use the *jetty-ru
 p. webrick can handle ssl as well here a blog which explains how to get ssl working for "webrick and rails3":http://www.nearinfinity.com/blogs/chris_rohr/configuring_webrick_to_use_ssl.html. but you have *only* ssl then !
 
 p. maybe other servers can offer you both ssl and none-ssl . . .
+
+p. *note* use *https://* in your url when using the ssl port or webrick with ssl
 
 h3. allow http for some controllers or some actions
 
