@@ -1,0 +1,21 @@
+h1. Enforce SSL for you controllers
+
+p. this is derived from the http://github.org/rails/ssl_requirement:rails/ssl_requirement and adopted a more strict approach: security everything and open where needed.
+
+p. info about the actual gem please look into the directory http://github.org/mkristian/ixtlan-guard/gem:enforce-ssl-gem
+
+h2. demo rails application
+
+p. the http://github.org/mkristian/ixtlan-guard/gem:demo is a sample rails3 application with integration tests. see readme how to start the application and what limitations apply.
+
+h2. run all the tests + integrations-tests in one go
+
+p. first you need jruby for this ! then you need to install
+
+bc.         jruby -S gem 'ruby-maven'
+
+p. which allows to run the integration-tests from the demo with jetty.
+
+p. now you can execute
+
+bc.         rmvn verify

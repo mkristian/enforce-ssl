@@ -1,0 +1,44 @@
+h1. Enforce SSL for you controllers
+
+p. this is derived from the http://github.org/rails/ssl_requirement:rails/ssl_requirement and adopted a more strict approach: security everything and open where needed.
+
+p. info about the actual gem please look into the directory http://github.org/mkristian/ixtlan-guard/gem:enforce-ssl-gem
+
+h2. usage
+
+p. add the gem in 'Gemfile'
+
+bc.         gem 'enforce-ssl'
+
+p. this activates the 'enforce-ssl' before_filter for all controllers, i.e.
+all requests which comes in as http will be redirected to the https url obeying the configured ssl port.
+
+h3. configure the ssl port
+
+p configure the enforced ssl port with (default: 443)
+
+bc.   config.ssl_port = 8443
+
+p. for development you can do that in 'config/environments/development.rb'.
+
+h3. using a webserver which listens to http + https
+
+p. if your Gemfile allows to JRuby as interpreter then you can use the *jetty-run* from the *ruby-maven* gem (jruby only) to have both an http and an https port listing for requests.
+
+p. webrick can handle ssl as well here a blog which explains how to get ssl working for http://www.nearinfinity.com/blogs/chris_rohr/configuring_webrick_to_use_ssl.html:"webrick and rails3". but you have *only* ssl then !
+
+p. maybe other servers can offer you both ssl and none-ssl . . .
+
+h3. allow http for some controllers or some actions
+
+p. use the *skip_before_filter* declaration with its *:only* and *:except* options to controll where you want to allow http along side https.
+
+bc. skip_before_filter :enforce_ssl
+
+p. or
+
+bc. skip_before_filter :enforce_ssl, :only => :index
+
+p. or
+
+bc. skip_before_filter :enforce_ssl, :except => :show
