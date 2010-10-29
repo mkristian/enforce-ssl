@@ -15,7 +15,7 @@ all requests which comes in as http will be redirected to the https url obeying 
 
 h3. configure the ssl port
 
-p configure the enforced ssl port with (default => { development => 3000, production => 443)
+p. configure the enforced ssl port with (default => { development => 3000, production => 443)
 
 bc.   config.ssl_port = 8443
 
@@ -29,7 +29,7 @@ p. webrick can handle ssl as well here a blog which explains how to get ssl work
 
 p. maybe other servers can offer you both ssl and none-ssl . . .
 
-p. *note* use *https://* in your url when using the ssl port or webrick with ssl
+p. *NOTE*: use *https://* in your url when using the ssl port or webrick with ssl
 
 h3. allow http for some controllers or some actions
 
