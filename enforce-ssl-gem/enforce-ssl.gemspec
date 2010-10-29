@@ -19,14 +19,15 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rake', '0.8.7'
 
   s.post_install_message = <<-TEXT
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-configure the enforced ssl port with (default: 443)
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+configure the enforced ssl port with 
+(default => { development => 3000, production => 443 }):
 
    config.ssl_port = 8443
 
-for development you can do that in 'config/environments/development.rb'. you 
-can use 'jetty-run' from 'ruby-maven' gem (jruby only) to have both an http 
-and an https port listing for requests.
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+for development you can do that in 'config/environments/development.rb'. 
+you can use 'jetty-run' from 'ruby-maven' gem (jruby only) to have both 
+an http and an https port listing for requests.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 TEXT
 end

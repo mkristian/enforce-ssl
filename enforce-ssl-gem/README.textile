@@ -1,8 +1,8 @@
 h1. Enforce SSL for you controllers
 
-p. this is derived from the http://github.org/rails/ssl_requirement:rails/ssl_requirement and adopted a more strict approach: security everything and open where needed.
+p. this is derived from the "rails/ssl_requirement":http://github.org/rails/ssl_requirement and adopted a more strict approach: *secure everything and open it where needed*.
 
-p. info about the actual gem please look into the directory http://github.org/mkristian/ixtlan-guard/gem:enforce-ssl-gem
+p. info about the actual gem please look into the directory "enforce-ssl-gem":http://github.org/mkristian/ixtlan-guard/gem
 
 h2. usage
 
@@ -15,7 +15,7 @@ all requests which comes in as http will be redirected to the https url obeying 
 
 h3. configure the ssl port
 
-p configure the enforced ssl port with (default: 443)
+p configure the enforced ssl port with (default => { development => 3000, production => 443)
 
 bc.   config.ssl_port = 8443
 
@@ -25,7 +25,7 @@ h3. using a webserver which listens to http + https
 
 p. if your Gemfile allows to JRuby as interpreter then you can use the *jetty-run* from the *ruby-maven* gem (jruby only) to have both an http and an https port listing for requests.
 
-p. webrick can handle ssl as well here a blog which explains how to get ssl working for http://www.nearinfinity.com/blogs/chris_rohr/configuring_webrick_to_use_ssl.html:"webrick and rails3". but you have *only* ssl then !
+p. webrick can handle ssl as well here a blog which explains how to get ssl working for "webrick and rails3":http://www.nearinfinity.com/blogs/chris_rohr/configuring_webrick_to_use_ssl.html. but you have *only* ssl then !
 
 p. maybe other servers can offer you both ssl and none-ssl . . .
 
