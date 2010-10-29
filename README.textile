@@ -4,11 +4,11 @@ p. with the advent of hijacking tools for dummies like "firesheep":http://codebu
 
 p. this is derived from the "rails/ssl_requirement":http://github.org/rails/ssl_requirement and adopted a more strict approach: *secure everything and open it where needed*.
 
-p. info about the actual gem please look into the directory "enforce-ssl-gem":http://github.org/mkristian/enforce-ssl/enforce-ssl-gem
+p. info about the actual gem please look into the directory "enforce-ssl-gem":http://github.org/mkristian/enforce-ssl/tree/master/enforce-ssl-gem
 
 h2. demo rails application
 
-p. the "demo":http://github.org/mkristian/enforce-ssl/demo is a sample rails3 application with integration tests. see "readme":http://github.org/mkristian/enforce-ssl/demo how to start the application and what limitations apply.
+p. the "demo":http://github.org/mkristian/enforce-ssl/tree/master/demo is a sample rails3 application with integration tests. see "readme":http://github.org/mkristian/enforce-ssl/tree/master/demo/README.textile how to start the application and what limitations apply.
 
 h2. run all the tests + integrations-tests in one go
 
