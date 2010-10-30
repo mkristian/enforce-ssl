@@ -1,3 +1,4 @@
+# -*- mode: ruby -*-
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.0'
@@ -32,3 +33,29 @@ gem "jdbc-sqlite3", :require => false if defined?(JRUBY_VERSION)
 # end
 
 gem 'enforce-ssl'
+
+if defined? MAVEN
+  properties({ "jruby.plugins.version" => '0.23.0-SNAPSHOT' })
+
+  #TODO allow :scope => :test, :classifier => "test", :exclusions => ['ant.ant']
+  #group :dev do
+    jar 'junit.junit', '3.8.2'
+    jar 'org.seleniumhq.selenium.client-drivers.selenium-java-client-driver', '1.0.1'
+  #end
+
+  plugin('org.mortbay.jetty.jetty-maven-plugin', '${jetty.version}') do |jetty|
+    jetty.with(:stopKey => 'foo', :stopPort => 9999)
+    jetty.in_phase('pre-integration-test').execute('run').with(:daemon => true)
+    jetty.in_phase('post-integration-test').execute('stop')
+  end
+
+  plugin('org.codehaus.mojo.selenium-maven-plugin', '1.1') do |selenium|
+    selenium.in_phase('pre-integration-test').execute("start-server").with({
+         :background => true, :firefoxProfileTemplate => "src/test/resources/selenium" })
+  end
+
+  plugin('surefire', '2.6') do |surefire|
+    surefire.with :skip => true
+    surefire.in_phase('integration-test').execute('test').with :skip => false 
+  end
+end
