@@ -1,33 +1,41 @@
 h1. Enforce SSL for you controllers
 
-p. this is derived from the "rails/ssl_requirement":http://github.org/rails/ssl_requirement and adopted a more strict approach: *secure everything and open it where needed*.
-
-p. info about the actual gem please look into the directory "enforce-ssl-gem":http://github.org/mkristian/enforce-ssl/tree/master/enforce-ssl-gem
+p. this is derived from the "rails/ssl_requirement":http://github.org/rails/ssl_requirement and adopted a more strict approach: *secure everything and open it when and where needed*.
 
 h2. usage
 
-p. it requires rails2. for installation add the gem in 'Gemfile'
+p. it requires rails3. for installation add the gem in _Gemfile_
 
 bc.         gem 'enforce-ssl'
 
-p. this activates the 'enforce-ssl' before_filter for all controllers, i.e.
+p. this activates the *enforce-ssl* before_filter for all controllers, i.e.
 all requests which comes in as http will be redirected to the https url obeying the configured ssl port.
 
-h3. configure the ssl port
+h3. configure the ssl/no_ssl port
 
-p. configure the enforced ssl port with (default => { development => 3000, production => 443)
+p. configure the enforced ssl port with (default => { development => 8080/8443, production => 80/443)
 
 bc.   config.ssl_port = 8443
+   config.no_ssl_port = 8080
 
-p. for development you can do that in 'config/environments/development.rb'.
+p. for development you can do that in _config/environments/development.rb_.
+
+h3. configure HSTS - HTTP Strict Transport Security
+
+p. there are two config parameters for HSTS: hsts_include_sub_domain (default false) and hsts_max_age (default 31536000 which is one year in seconds). 
+
+p. these configuration is *only used during production* so it sufficient to configure it in _config/environments/production.rb_
+
+bc.   config.hsts_include_sub_domain = false
+   config.hsts_max_age = 31536000
 
 h3. using a webserver which listens to http + https
 
-p. if your Gemfile allows to JRuby as interpreter then you can use the *jetty-run* from the *ruby-maven* gem (jruby only) to have both an http and an https port listing for requests.
+p. if your Gemfile allows to use JRuby as interpreter then you can use the *jetty-run* from the *ruby-maven* gem (jruby only) to have both an http and an https port listing for requests. that is how the defaults are set up.
 
-p. webrick can handle ssl as well here a blog which explains how to get ssl working for "webrick and rails3":http://www.nearinfinity.com/blogs/chris_rohr/configuring_webrick_to_use_ssl.html. but you have *only* ssl then !
+p. webrick can handle ssl as well. here a blog which explains how to get ssl working for "webrick and rails3":http://www.nearinfinity.com/blogs/chris_rohr/configuring_webrick_to_use_ssl.html. but you have *only* ssl then and you need to configure the ssl_port correctly.
 
-p. maybe other servers can offer you both ssl and none-ssl . . .
+p. maybe other servers can offer both ssl and none-ssl . . .
 
 p. *NOTE*: use *https://* in your url when using the ssl port or webrick with ssl
 
