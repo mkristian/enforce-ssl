@@ -1,0 +1,40 @@
+# -*- mode: ruby -*-
+properties["jruby.plugins.version"] = '0.25.0'
+
+jar('junit:junit', '3.8.2').scope 'test'
+
+jar('org.seleniumhq.selenium.client-drivers:selenium-java-client-driver', '1.0.1').scope 'test'
+
+plugin('org.mortbay.jetty:jetty-maven-plugin') do |jetty|
+  jetty.with(:stopKey => 'foo', :stopPort => 9999)
+  jetty.in_phase('pre-integration-test').execute_goal('run').with(:daemon => true)
+  jetty.in_phase('post-integration-test').execute_goal('stop')
+end
+
+plugin('org.codehaus.mojo:selenium-maven-plugin', '1.1') do |selenium|
+  selenium.in_phase('pre-integration-test').execute_goal("start-server").with(
+     {
+       :background => true, 
+       :firefoxProfileTemplate => "${basedir}/src/test/resources/selenium" 
+     })
+end
+
+plugin('surefire', '2.6') do |surefire|
+  # skip the test dring test phase
+  surefire.with :skip => true
+  # but execute them during integration-test phase
+  surefire.in_phase('integration-test').execute_goal('test').with :skip => false
+end
+
+execute_in_phase(:initialize) do
+  require 'fileutils'
+  
+  if File.exists? 'pom.xml'
+    pom_xml = File.new "pom.xml"
+    pom = File.new "Gemfile.pom"
+    out_of_date = pom_xml.mtime < pom.mtime
+  else
+    out_of_date = true
+  end
+  FileUtils.cp("Gemfile.pom", "pom.xml") if out_of_date
+end

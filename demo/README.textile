@@ -1,48 +1,59 @@
 h1. Start the demo application
 
-h2. with maven3 (jetty)
+p. note: Gemfile.lock is not part of the git repository since it is platform dependent and can not be use for MRI and JRuby at the same time.
+
+h2. with maven3 (using jetty)
 
 bc. mvn rails3:rake -Dargs="db:setup"
-mvn jetty:run -f Gemfile.pom
+mvn jetty:run
 
 p. note: there is no need to have jruby, rubygems, rails installed !!!
 
-h2. with ruby-maven gem (jetty)
+h2. with ruby-maven gem (using jetty)
 
-bc. jruby -S gem install ruby-maven --pre
+bc. jruby -S gem install ruby-maven
 rmvn rake db:setup
-rmvn jetty-run
+rmvn jetty:run
 
 p. note: you need to have jruby installed but no rails or bundler !!!
 
-h2. with jruby (webrick)
+h2. with jruby (using webrick) without enforce-ssl 
 
 bc. jruby -S bundle install
 jruby -S rake db:setup
 jruby script/rails server
 
+p. or with ruby-maven
+
+bc. rmvn rake db:setup
+rmvn rails server
+
+p. enforce-ssl does not work since the server listens only on one port and it is kind of hacky to get SSL working
+
 p. note: you to have jruby and bundler installed !!!
 
-h2. with ruby (webrick)
+h2. with ruby (using webrick) without enforce-ssl
 
 bc. bundle install
 rake db:setup
 script/rails server
 
+p. enforce-ssl does not work since the server listens only on one port and it is kind of hacky to get SSL working
+
 p. note: you to have bundler installed !!!
 
 h1. Run the integration test (selenium)
 
-h2. with maven3 (jetty)
+h2. with maven3
 
 bc. mvn rails3:rake -Dargs="db:setup"
-mvn integration-test -f Gemfile.pom
+mvn integration-test
 
 p. note: there is no need to have jruby, rubygems, rails installed !!!
 
-h2. with ruby-maven gem (jetty)
+h2. with ruby-maven
 
-bc. jruby -S gem install ruby-maven --pre
+bc. jruby -S gem install ruby-maven
 rmvn rake db:setup
 rmvn integration-test
 
