@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>rubygems</groupId>
   <artifactId>enforce-ssl</artifactId>
-  <version>0.1.0</version>
+  <version>0.2.0</version>
   <name><![CDATA[enforce the use of SSL for all controller actions]]></name>
   <packaging>gem</packaging>
   <description><![CDATA[enforce the use of SSL for all controller actions, skip the enforcement with skip_before_filter :enforce_ssl for selected actions. moto: secure everything, open where needed]]></description>
@@ -56,7 +56,7 @@
   <properties>
     <gem.home>${project.build.directory}/rubygems</gem.home>
     <gem.path>${project.build.directory}/rubygems</gem.path>
-    <jruby.plugins.version>0.25.0-SNAPSHOT</jruby.plugins.version>
+    <jruby.plugins.version>0.26.0-SNAPSHOT</jruby.plugins.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   <build>
@@ -66,19 +66,9 @@
         <artifactId>gem-maven-plugin</artifactId>
         <version>${jruby.plugins.version}</version>
         <extensions>true</extensions>
-        <executions>
-          <execution>
-            <id>in_phase_install</id>
-            <phase>install</phase>
-            <goals>
-              <goal>execute_in_phase</goal>
-            </goals>
-            <configuration>
-              <file>Mavenfile</file>
-              <phase>install</phase>
-            </configuration>
-          </execution>
-        </executions>
+        <configuration>
+          <files>MIT-LICENSE,lib/enforce-ssl.rb,lib/enforce_ssl/filter_railtie.rb,lib/enforce_ssl/rack_railtie.rb,lib/enforce_ssl/enforce_ssl_filter.rb,lib/enforce_ssl/base_railtie.rb,lib/enforce_ssl/enforce_ssl_rack.rb</files>
+        </configuration>
       </plugin>
     </plugins>
   </build>

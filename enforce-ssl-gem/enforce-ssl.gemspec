@@ -15,6 +15,6 @@ Gem::Specification.new do |s|
 #  s.files += Dir['README.textile']
 #  s.extra_rdoc_files = ['History.txt','README.textile']
 #  s.rdoc_options = ['--main','README.textile']
-  s.files += Dir['lib/**/*']
+  s.files += Dir['lib/**/*rb']
   s.add_development_dependency 'rake', '0.8.7'
 end
