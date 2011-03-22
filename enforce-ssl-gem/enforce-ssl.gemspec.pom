@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>rubygems</groupId>
   <artifactId>enforce-ssl</artifactId>
-  <version>0.2.0</version>
+  <version>0.3.0</version>
   <name><![CDATA[enforce the use of SSL for all controller actions]]></name>
   <packaging>gem</packaging>
   <description><![CDATA[enforce the use of SSL for all controller actions, skip the enforcement with skip_before_filter :enforce_ssl for selected actions. moto: secure everything, open where needed]]></description>

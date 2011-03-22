@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'enforce-ssl'
-  s.version = '0.2.0'
+  s.version = '0.3.0'
 
   s.summary = 'enforce the use of SSL for all controller actions'
   s.description = 'enforce the use of SSL for all controller actions, skip the enforcement with skip_before_filter :enforce_ssl for selected actions. moto: secure everything, open where needed'
