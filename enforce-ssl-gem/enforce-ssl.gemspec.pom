@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>rubygems</groupId>
   <artifactId>enforce-ssl</artifactId>
-  <version>0.3.0</version>
+  <version>0.2.2</version>
   <name><![CDATA[enforce the use of SSL for all controller actions]]></name>
   <packaging>gem</packaging>
   <description><![CDATA[enforce the use of SSL for all controller actions, skip the enforcement with skip_before_filter :enforce_ssl for selected actions. moto: secure everything, open where needed]]></description>
@@ -27,18 +27,6 @@
       <url>http://gems.saumya.de/releases</url>
     </repository>
   </repositories>
-  <pluginRepositories>
-    <pluginRepository>
-      <id>sonatype-snapshots</id>
-      <url>http://oss.sonatype.org/content/repositories/snapshots</url>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </pluginRepository>
-  </pluginRepositories>
   <dependencies>
     <dependency>
       <groupId>rubygems</groupId>
@@ -51,12 +39,13 @@
       <groupId>org.jruby</groupId>
       <artifactId>jruby-complete</artifactId>
       <version>1.5.6</version>
+      <type>jar</type>
     </dependency>
   </dependencies>
   <properties>
     <gem.home>${project.build.directory}/rubygems</gem.home>
     <gem.path>${project.build.directory}/rubygems</gem.path>
-    <jruby.plugins.version>0.26.0-SNAPSHOT</jruby.plugins.version>
+    <jruby.plugins.version>0.26.0</jruby.plugins.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   <build>

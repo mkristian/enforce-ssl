@@ -13,7 +13,7 @@ module EnforceSsl
         # use only if max_age is set and only in production mode since it
         # needs a proper (not self-signed) certificate
         if Rails.configuration.hsts_max_age && Rails.env == "production"
-          subdomain = Rails.configuration.hsts_include_sub_domains? ? " ; includeSubDomains" : ""
+          subdomain = Rails.configuration.hsts_include_sub_domain == true ? " ; includeSubDomains" : ""
          controller. response.headers['Strict-Transport-Security'] = "max-age=#{Rails.configuration.hsts_max_age.to_i}" + subdomain
           
         end
